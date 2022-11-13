@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.5.8</version>
+        <relativePath />
+    </parent>    
+    
+    <groupId>com.apps</groupId>
+    <artifactId>aws-s3-camel-writer-app</artifactId>
+    <version>1.0.1</version>
+    <packaging>jar</packaging>
+
+    <name>AWS S3 Integration Service Writer App</name>
+    <description>AWS S3 integration application Writer App</description>
+    
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        
+        <java.version>1.8</java.version>
+        
+        <commons.version>2.5</commons.version>
+        
+        <camel.core.version>3.2.0</camel.core.version>
+        <camel.jackson.version>3.2.0</camel.jackson.version>
+        <camel.aws.s3.version>3.2.0</camel.aws.s3.version>
+       
+        <camel.quartz2.version>2.25.4</camel.quartz2.version>
+        
+        <lombok.version>1.18.24</lombok.version>
+        <javafaker.version>0.12</javafaker.version>
+    </properties>    
+
+    <dependencies>
+        <!-- Spring dependencies -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+       
+        <!--  Camel spring dependencies -->
+		<dependency>
+  			<groupId>org.apache.camel.springboot</groupId>
+  			<artifactId>camel-aws2-s3-starter</artifactId>
+  			<version>${camel.aws.s3.version}</version>
+		</dependency>
+		
+        <!-- Camel base modules -->
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-core</artifactId>
+            <version>${camel.core.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-quartz2</artifactId>
+            <version>${camel.quartz2.version}</version>
+        </dependency>
+        
+		<dependency>
+    		<groupId>org.apache.camel</groupId>
+    		<artifactId>camel-jackson</artifactId>
+   	 		<version>${camel.jackson.version}</version>
+		</dependency>               
+		        
+        <dependency>
+    		<groupId>org.apache.camel</groupId>
+    		<artifactId>camel-aws2-s3</artifactId>
+    		<version>${camel.aws.s3.version}</version>
+		</dependency>	
+             
+        <!-- Other third party modules -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>${javafaker.version}</version>
+        </dependency>    
+        		
+		<!--  Runtime libraries  -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.outputDirectory}/static/docs</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${project.build.directory}/generated-docs</directory>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
