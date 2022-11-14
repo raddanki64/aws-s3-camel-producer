@@ -1,6 +1,6 @@
 spring:
   application:
-    name: aws-s3-camel-publisher
+    name: aws-s3-camel-producer
 
 logging:
   pattern:
