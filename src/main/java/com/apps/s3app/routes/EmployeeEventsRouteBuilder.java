@@ -57,7 +57,7 @@ public class EmployeeEventsRouteBuilder extends RouteBuilder {
         
         // Writer route
 		from(timerExpression)
-		.routeId("Aws-s3.Writer.Route")
+		.routeId("Aws-s3.Producer.Route")
 		.process(empEventProcessor)		
 		.to(awsUrl)
 		.log("Content saved as aws-s3 file - ${header." + EmployeeEventProcessor.AWS_S3_KEY + "}")
