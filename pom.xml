@@ -12,12 +12,12 @@
     </parent>    
     
     <groupId>com.apps</groupId>
-    <artifactId>aws-s3-camel-writer-app</artifactId>
+    <artifactId>aws-s3-camel-publisher</artifactId>
     <version>1.0.1</version>
     <packaging>jar</packaging>
 
-    <name>AWS S3 Integration Service Writer App</name>
-    <description>AWS S3 integration application Writer App</description>
+    <name>AWS S3 Publisher</name>
+    <description>AWS S3 Publisher using camel routes</description>
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
